@@ -6,8 +6,7 @@ export const ParentRowStyled = styled.div`
     align-items: center;
     height: 32px;
     box-sizing: border-box;
-    margin-left: ${(props) => (props.child ? "26px" : "12px")};
-    margin-bottom: ${(props) => (props.child ? "0px" : "6px")};
+    margin: 16px 0 6px 12px;
   }
 
   input {
@@ -42,7 +41,6 @@ export const ParentRowStyled = styled.div`
     justify-content: space-between;
     padding: 5px 10px;
     width: 100%;
-    border-radius: ${(props) => (props.child ? "30px" : "none")};
     height: 32px;
     align-items: center;
 
@@ -52,7 +50,6 @@ export const ParentRowStyled = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    /* identical to box height, or 150% */
 
     color: rgba(0, 0, 0, 0.8);
 
@@ -61,7 +58,7 @@ export const ParentRowStyled = styled.div`
   .wrap {
     position: relative;
     align-items: center;
-    width: ${(props) => (props.child ? "184px" : "216px")};
+    width: 216px;
     display: flex;
     margin-right: 12px;
   }
@@ -79,8 +76,6 @@ export const ParentRowStyled = styled.div`
     padding: 5px 14px;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: ${(props) => (props.child ? "30px" : "none")};
-
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
   }
@@ -96,15 +91,17 @@ export const ParentRowStyled = styled.div`
     line-height: 20px;
     margin-left: 2px;
     outline: none;
-    border-radius: ${(props) => (props.child ? "30px" : "none")};
-
     & :focus {
       outline: none;
     }
   }
+  .childs {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-left: 78px;
+    margin-top: ${(props) => (props.toggle ? "20px" : "0px")};
+  }
   .discountBtn {
     width: 192px;
-
     height: 32px;
     display: flex;
     align-items: center;

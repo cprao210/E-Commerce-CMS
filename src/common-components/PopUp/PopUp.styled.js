@@ -13,7 +13,7 @@ const PopUpStyle = styled.div`
   width: 664px;
   z-index: 200;
   background: #ffffff;
-  /* transition: height 1s ease-out; */
+  border-radius: 4px;
   box-sizing: border-box;
 `;
 

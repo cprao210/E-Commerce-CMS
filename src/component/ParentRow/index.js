@@ -28,7 +28,7 @@ const ParentRow = ({
   };
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <ParentRowStyled child={child}>
+      <ParentRowStyled child={child} toggle={data.length <= 1}>
         <div className="row">
           {children}
           <p className="numbering"> {indexValue + 1}.</p>
@@ -114,51 +114,53 @@ const ParentRow = ({
             )}
           </div>
         )}
-        {!showHide ? (
-          <Droppable droppableId={`droppable${indexValue}`}>
-            {(provider) => (
-              <div
-                className="childs"
-                ref={provider.innerRef}
-                {...provider.draggableProps}
-              >
-                {data.map((variants, i) => (
-                  <Draggable
-                    key={`${indexValue}${i}`}
-                    draggableId={`${indexValue}${i}`}
-                    index={i}
-                  >
-                    {(provider) => (
-                      <div
-                        className=""
-                        ref={provider.innerRef}
-                        {...provider.draggableProps}
-                      >
-                        <ChildRow
-                          valueInput={variants.title}
-                          tableData={tableData}
-                          setTableData={setTableData}
-                          index={i}
-                          ind={indexValue}
+        <div className="childs">
+          {!showHide ? (
+            <Droppable droppableId={`droppable${indexValue}`}>
+              {(provider) => (
+                <div
+                  className=""
+                  ref={provider.innerRef}
+                  {...provider.draggableProps}
+                >
+                  {data.map((variants, i) => (
+                    <Draggable
+                      key={`${indexValue}${i}`}
+                      draggableId={`${indexValue}${i}`}
+                      index={i}
+                    >
+                      {(provider) => (
+                        <div
+                          className=""
+                          ref={provider.innerRef}
+                          {...provider.draggableProps}
                         >
-                          <img
-                            src={
-                              process.env.PUBLIC_URL + "assets/icons/dots.svg"
-                            }
-                            className="Childdots"
-                            alt="dots"
-                            {...provider.dragHandleProps}
-                          />
-                        </ChildRow>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provider.placeholder}
-              </div>
-            )}
-          </Droppable>
-        ) : null}
+                          <ChildRow
+                            valueInput={variants.title}
+                            tableData={tableData}
+                            setTableData={setTableData}
+                            index={i}
+                            ind={indexValue}
+                          >
+                            <img
+                              src={
+                                process.env.PUBLIC_URL + "assets/icons/dots.svg"
+                              }
+                              className="Childdots"
+                              alt="dots"
+                              {...provider.dragHandleProps}
+                            />
+                          </ChildRow>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provider.placeholder}
+                </div>
+              )}
+            </Droppable>
+          ) : null}
+        </div>
       </ParentRowStyled>
     </DragDropContext>
   );
