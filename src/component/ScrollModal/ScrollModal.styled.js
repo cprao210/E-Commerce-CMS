@@ -44,8 +44,4 @@ export const ScrollModalStyled = styled.div`
   .inventory {
     margin-right: 36px;
   }
-  span {
-    display: flex;
-    align-items: center;
-  }
 `;

@@ -66,6 +66,10 @@ export const FetchTableStyled = styled.div`
     border-radius: 4px;
     box-sizing: border-box;
   }
+  span {
+    display: flex;
+    align-items: center;
+  }
   .clcBtn {
     display: flex;
     align-items: center;
