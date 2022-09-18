@@ -28,7 +28,7 @@ export const TableStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    cursor: pointer;
     height: 48px;
     width: 194px;
     border: 2px solid #008060;

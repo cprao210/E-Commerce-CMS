@@ -1,4 +1,5 @@
 import React from "react";
+import DiscountModal from "../../common-components/DiscountModal";
 import { ChildRowStyled } from "./ChildRow.styled";
 
 const ChildRow = ({
@@ -29,7 +30,16 @@ const ChildRow = ({
           />
         </div>
 
-        <input className="ChilddiscountDiv" placeholder="20" />
+        <DiscountModal
+          setTableData={setTableData}
+          indexValue={index}
+          tableData={tableData}
+          ind={ind}
+          crossToggle={tableData[ind].variants.length}
+          child={true}
+        />
+
+        {/* <input className="ChilddiscountDiv" placeholder="20" />
         <select name="" className="ChilddiscountType ChilddiscountDiv" id="">
           <option value="">% Off</option>
           <option value="">Flat</option>
@@ -45,7 +55,7 @@ const ChildRow = ({
               setTableData([...newState]);
             }}
           />
-        ) : null}
+        ) : null} */}
       </div>
     </ChildRowStyled>
   );

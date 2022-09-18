@@ -4,6 +4,7 @@ export const ParentRowStyled = styled.div`
   .row {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 32px;
     box-sizing: border-box;
     margin: 16px 0 6px 12px;
@@ -70,7 +71,7 @@ export const ParentRowStyled = styled.div`
     right: 0;
     cursor: pointer;
   }
-  .discountDiv {
+  /* .discountDiv {
     width: 70px;
     height: 32px;
     padding: 5px 14px;
@@ -78,6 +79,7 @@ export const ParentRowStyled = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    cursor: pointer;
   }
   .cross {
     height: 12px;
@@ -94,7 +96,7 @@ export const ParentRowStyled = styled.div`
     & :focus {
       outline: none;
     }
-  }
+  } */
   .childs {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-left: 78px;

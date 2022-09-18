@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import ChildRow from "../ChildRow";
 import { ParentRowStyled } from "./ParentRow.styled";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import DiscountModal from "../../common-components/DiscountModal";
+import ToggleBtn from "../../common-components/ToggleBtn";
 
 const ParentRow = ({
-  child,
   handleEdit,
   valueInput,
   indexValue,
@@ -28,7 +29,7 @@ const ParentRow = ({
   };
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <ParentRowStyled child={child} toggle={data.length <= 1}>
+      <ParentRowStyled toggle={data.length <= 1}>
         <div className="row">
           {children}
           <p className="numbering"> {indexValue + 1}.</p>
@@ -53,23 +54,13 @@ const ParentRow = ({
             />
           </div>
           {showDiscownt ? (
-            <>
-              <input className="discountDiv" type="number" placeholder="20" />
-              <select name="" className="discountType discountDiv" id="">
-                <option value="">% Off</option>
-                <option value="">Flat</option>
-              </select>
-              <img
-                src={process.env.PUBLIC_URL + "assets/icons/cross.svg"}
-                className="cross"
-                alt="cross"
-                onClick={() => {
-                  const newState = [...tableData];
-                  newState.splice(indexValue, 1);
-                  setTableData(newState);
-                }}
-              />
-            </>
+            <DiscountModal
+              setTableData={setTableData}
+              indexValue={indexValue}
+              tableData={tableData}
+              crossToggle={tableData.length}
+              child={false}
+            />
           ) : (
             <div
               className="discountBtn"
@@ -81,41 +72,11 @@ const ParentRow = ({
             </div>
           )}
         </div>
-        {data.length <= 1 ? null : (
-          <div
-            className="toggle"
-            onClick={() => {
-              if (showHide) {
-                d.isSelected = false;
-                setshowHide(false);
-              } else {
-                setshowHide(true);
-
-                d.isSelected = true;
-              }
-            }}
-          >
-            {!showHide ? (
-              <p className="toggleValue">
-                Hide variants{" "}
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/icons/UpArrow.svg"}
-                  alt="upArrow"
-                />
-              </p>
-            ) : (
-              <p className="toggleValue">
-                Show variants{" "}
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/icons/DownArrow.svg"}
-                  alt="upArrow"
-                />
-              </p>
-            )}
-          </div>
+        {data.length > 1 && (
+          <ToggleBtn setshowHide={setshowHide} showHide={showHide} />
         )}
         <div className="childs">
-          {!showHide ? (
+          {!showHide && (
             <Droppable droppableId={`droppable${indexValue}`}>
               {(provider) => (
                 <div
@@ -159,7 +120,7 @@ const ParentRow = ({
                 </div>
               )}
             </Droppable>
-          ) : null}
+          )}
         </div>
       </ParentRowStyled>
     </DragDropContext>

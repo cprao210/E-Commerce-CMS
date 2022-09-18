@@ -25,28 +25,24 @@ const Table = ({ handleEdit, tableData, setTableData }) => {
                 <Draggable key={i} draggableId={i.toString()} index={i}>
                   {(provided) => (
                     <div ref={provided.innerRef} {...provided.draggableProps}>
-                      <div className="d">
-                        <ParentRow
-                          child={false}
-                          valueInput={d.handle}
-                          indexValue={i}
-                          handleEdit={handleEdit}
-                          d={d}
-                          data={d.variants}
-                          tableData={tableData}
-                          setTableData={setTableData}
-                        >
-                          <img
-                            {...provided.dragHandleProps}
-                            src={
-                              process.env.PUBLIC_URL + "assets/icons/dots.svg"
-                            }
-                            style={{ marginLeft: "54px" }}
-                            className="dots"
-                            alt="dots"
-                          />
-                        </ParentRow>
-                      </div>
+                      <ParentRow
+                        child={false}
+                        valueInput={d.handle}
+                        indexValue={i}
+                        handleEdit={handleEdit}
+                        d={d}
+                        data={d.variants}
+                        tableData={tableData}
+                        setTableData={setTableData}
+                      >
+                        <img
+                          {...provided.dragHandleProps}
+                          src={process.env.PUBLIC_URL + "assets/icons/dots.svg"}
+                          style={{ marginLeft: "54px" }}
+                          className="dots"
+                          alt="dots"
+                        />
+                      </ParentRow>
                     </div>
                   )}
                 </Draggable>
