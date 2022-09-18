@@ -6,6 +6,12 @@ import { FormControlLabel } from "@mui/material";
 import { getProducts } from "../../services/products";
 import Spinner from "../../common-components/Spinner";
 import { ScrollModalStyled } from "./ScrollModal.styled";
+import {
+  handleChecked,
+  handleIndeterminate,
+  handleProductClick,
+  handleVarientClick,
+} from "../../utils/fetchProducts";
 const ScrollModal = ({
   searchValue,
   pageNo,
@@ -89,42 +95,10 @@ const ScrollModal = ({
                             color: "#008060",
                           },
                         }}
-                        checked={
-                          d.variants.length ===
-                          d.variants.filter((d, i) => {
-                            return d.isSelected;
-                          }).length
-                            ? true
-                            : false
-                        }
-                        indeterminate={
-                          d.variants.filter((d, i) => {
-                            return d.isSelected;
-                          }).length > 0 &&
-                          d.variants.length !==
-                            d.variants.filter((d, i) => {
-                              return d.isSelected;
-                            }).length
-                            ? true
-                            : false
-                        }
+                        checked={handleChecked(d)}
+                        indeterminate={handleIndeterminate(d)}
                         onClick={(e) => {
-                          if (
-                            d.variants.length ===
-                            d.variants.filter((d, i) => {
-                              return d.isSelected;
-                            }).length
-                          ) {
-                            fetchProducts[parentIndex].variants =
-                              d.variants.map((d, i) => {
-                                return { ...d, isSelected: false };
-                              });
-                          } else {
-                            fetchProducts[parentIndex].variants =
-                              d.variants.map((d, i) => {
-                                return { ...d, isSelected: true };
-                              });
-                          }
+                          handleProductClick(fetchProducts, parentIndex, d);
                           setFetchProducts([...fetchProducts]);
                         }}
                       />
@@ -147,18 +121,7 @@ const ScrollModal = ({
                         }}
                         checked={variants.isSelected ? true : false}
                         onClick={(e) => {
-                          if (
-                            fetchProducts[parentIndex].variants[e.target.value]
-                              .isSelected
-                          ) {
-                            fetchProducts[parentIndex].variants[
-                              e.target.value
-                            ].isSelected = false;
-                          } else {
-                            fetchProducts[parentIndex].variants[
-                              e.target.value
-                            ].isSelected = true;
-                          }
+                          handleVarientClick(fetchProducts, parentIndex, e);
                           setFetchProducts([...fetchProducts]);
                         }}
                       />

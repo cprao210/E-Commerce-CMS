@@ -2,6 +2,7 @@ import React from "react";
 import ParentRow from "../ParentRow";
 import { TableStyled } from "./Table.style";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { addProductInput } from "../../utils/productsTable";
 
 const Table = ({ handleEdit, tableData, setTableData }) => {
   const handleDragEnd = (e) => {
@@ -26,7 +27,6 @@ const Table = ({ handleEdit, tableData, setTableData }) => {
                   {(provided) => (
                     <div ref={provided.innerRef} {...provided.draggableProps}>
                       <ParentRow
-                        child={false}
                         valueInput={d.handle}
                         indexValue={i}
                         handleEdit={handleEdit}
@@ -54,12 +54,7 @@ const Table = ({ handleEdit, tableData, setTableData }) => {
                   className="addMorebtn"
                   onClick={() => {
                     const newArr = [...tableData];
-                    newArr.push({
-                      title: "",
-                      handle: "",
-                      variants: [],
-                      id: new Date().getTime(),
-                    });
+                    addProductInput(newArr);
                     setTableData(newArr);
                   }}
                 >

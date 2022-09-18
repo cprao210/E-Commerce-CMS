@@ -14,8 +14,7 @@ const Modal = () => {
       id: new Date().getTime(),
     },
   ]);
-  const [ReplaceIndex, setReplaceIndex] = useState(0);
-  console.log(tableData);
+  const [replaceIndex, setReplaceIndex] = useState(0);
   const handleCross = () => {
     setShow(false);
   };
@@ -42,7 +41,7 @@ const Modal = () => {
       <PopUp
         show={show}
         tableData={tableData}
-        ReplaceIndex={ReplaceIndex}
+        ReplaceIndex={replaceIndex}
         setTableData={setTableData}
         handleCross={handleCross}
       />

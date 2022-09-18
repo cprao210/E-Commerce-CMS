@@ -38,24 +38,6 @@ const ChildRow = ({
           crossToggle={tableData[ind].variants.length}
           child={true}
         />
-
-        {/* <input className="ChilddiscountDiv" placeholder="20" />
-        <select name="" className="ChilddiscountType ChilddiscountDiv" id="">
-          <option value="">% Off</option>
-          <option value="">Flat</option>
-        </select>
-        {tableData[ind].variants.length > 1 ? (
-          <img
-            src={process.env.PUBLIC_URL + "assets/icons/cross.svg"}
-            className="Childcross"
-            alt="cross"
-            onClick={() => {
-              const newState = [...tableData];
-              newState[ind].variants.splice(index, 1);
-              setTableData([...newState]);
-            }}
-          />
-        ) : null} */}
       </div>
     </ChildRowStyled>
   );

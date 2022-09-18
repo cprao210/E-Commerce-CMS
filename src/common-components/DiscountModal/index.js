@@ -9,7 +9,6 @@ const DiscountModal = ({
   ind,
   child,
 }) => {
-  console.log(crossToggle);
   return (
     <DiscountModalStyled child={child}>
       <input

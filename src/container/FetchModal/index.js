@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { FetchTableStyled } from "./FetchTable.styled";
 
 import ScrollModal from "../../component/ScrollModal";
+import { addProducts, productCount } from "../../utils/fetchProducts";
 const FetchTable = ({ setTableData, handleCross, tableData, ReplaceIndex }) => {
   const [fetchProducts, setFetchProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const [moreData, setMoreData] = useState(true);
 
   return (
@@ -48,18 +49,7 @@ const FetchTable = ({ setTableData, handleCross, tableData, ReplaceIndex }) => {
       </div>
       <div className="footer">
         <p className="productCount">
-          {
-            fetchProducts
-              .map(
-                (d, i) =>
-                  d.variants.filter((d1) => {
-                    return d1.isSelected;
-                  }).length
-              )
-              .filter((d, i) => {
-                return d > 0;
-              }).length
-          }
+          {productCount(fetchProducts)}
           &nbsp; Product selected
         </p>
         <span>
@@ -69,45 +59,10 @@ const FetchTable = ({ setTableData, handleCross, tableData, ReplaceIndex }) => {
           <div
             className="addBtn"
             onClick={() => {
-              if (tableData.length !== 0) {
-                const newState = [...tableData];
-                newState.splice(
-                  ReplaceIndex,
-                  1,
-                  ...fetchProducts
-                    .map((d, i) => {
-                      return {
-                        ...d,
+              const newState = [...tableData];
 
-                        variants: d.variants.filter((d1) => {
-                          return d1.isSelected;
-                        }),
-                      };
-                    })
-                    .filter((d, i) => {
-                      return d.variants.length > 0;
-                    })
-                );
-                setTableData(newState);
-              } else {
-                tableData = [
-                  ...fetchProducts
-                    .map((d, i) => {
-                      return {
-                        ...d,
-
-                        variants: d.variants.filter((d1) => {
-                          return d1.isSelected;
-                        }),
-                      };
-                    })
-                    .filter((d, i) => {
-                      return d.variants.length > 0;
-                    }),
-                ];
-                setTableData(tableData);
-              }
-
+              addProducts(fetchProducts, newState, ReplaceIndex);
+              setTableData(newState);
               handleCross();
             }}
           >
