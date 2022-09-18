@@ -4,7 +4,6 @@ import { ChildRowStyled } from "./ChildRow.styled";
 
 const ChildRow = ({
   child,
-  handleEdit,
   children,
   valueInput,
   ind,

@@ -16,6 +16,7 @@ export const DiscountModalStyled = styled.div`
     height: 12px;
     width: 12px;
     margin-left: 12px;
+    cursor: pointer;
   }
   .discountType {
     width: 96px;

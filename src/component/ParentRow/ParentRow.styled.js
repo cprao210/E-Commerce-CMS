@@ -71,32 +71,7 @@ export const ParentRowStyled = styled.div`
     right: 0;
     cursor: pointer;
   }
-  /* .discountDiv {
-    width: 70px;
-    height: 32px;
-    padding: 5px 14px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-  .cross {
-    height: 12px;
-    width: 12px;
-    margin-left: 12px;
-  }
-  .discountType {
-    width: 96px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    margin-left: 2px;
-    outline: none;
-    & :focus {
-      outline: none;
-    }
-  } */
+
   .childs {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-left: 78px;
@@ -115,7 +90,7 @@ export const ParentRowStyled = styled.div`
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
+    cursor: pointer;
 
     color: #ffffff;
     box-sizing: border-box;
