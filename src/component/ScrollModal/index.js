@@ -79,22 +79,9 @@ const ScrollModal = ({
                     sx={{
                       width: "24px",
                       height: "24px",
-
-                      "&.css-6gbriq-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-6gbriq-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate":
-                        {
-                          color: "#008060",
-                        },
                     }}
                     control={
                       <Checkbox
-                        sx={{
-                          "&.Mui-checked": {
-                            color: "#008060",
-                          },
-                          "&.Mui-indeterminate": {
-                            color: "#008060",
-                          },
-                        }}
                         checked={handleChecked(d)}
                         indeterminate={handleIndeterminate(d)}
                         onClick={(e) => {
@@ -115,9 +102,6 @@ const ScrollModal = ({
                         sx={{
                           width: "24px",
                           height: "24px",
-                          "&.Mui-checked": {
-                            color: "#008060",
-                          },
                         }}
                         checked={variants.isSelected ? true : false}
                         onClick={(e) => {
